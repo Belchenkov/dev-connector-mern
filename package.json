@@ -1,0 +1,26 @@
+{
+  "name": "mern-devconnector",
+  "version": "1.0.0",
+  "description": "Social network for develops",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Belchenkov/dev-connector-mern.git"
+  },
+  "keywords": [
+    "Mern",
+    "React",
+    "MongoDB",
+    "Node",
+    "Express"
+  ],
+  "author": "Aleksey Belchenkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Belchenkov/dev-connector-mern/issues"
+  },
+  "homepage": "https://github.com/Belchenkov/dev-connector-mern#readme"
+}
