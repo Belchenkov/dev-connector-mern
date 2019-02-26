@@ -9,9 +9,7 @@ const User = require('../../models/User');
 // @desc Tests users route
 // @access Public
 router.get('/test', (req, res) => {
-    res.json({
-        msg: "users works!"
-    });
+    res.json({ msg: "users works!" });
 });
 
 // @route GET api/users/register
@@ -42,12 +40,39 @@ router.post('/register', (req, res) => {
                         newUser.password = hash;
                         newUser.save()
                             .then(user => res.json(user))
-                            .catch(err => console.log(err));
+                            .catch(err => console.error(err));
                     });
                 });
             }
        })
-       .catch(err => console.log(err))
+       .catch(err => console.error(err))
+});
+
+// @route GET api/users/login
+// @desc Login User / Returning JWT Token
+// @access Public
+router.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // Find user by email
+    User.findOne({email})
+        .then(user => {
+            // Check for user
+            if(!user) {
+                return res.status(404).json({email: 'User not found!'});
+            }
+
+            // Check Password
+            bcrypt.compare(password, user.password)
+                .then(isMatch => {
+                    if (isMatch) {
+                        res.json({msg: 'Success'})
+                    } else {
+                        return res.status(400).json({password: 'Password incorrect!'})
+                    }
+                })
+        })
 });
 
 module.exports = router;
