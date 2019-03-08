@@ -1,12 +1,19 @@
 :root {
   --mainBlack: #000;
   --mainWhite: #fff;
+  --mainFontSize: 14px;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
   color: var(--mainBlack);
   background: var(--mainWhite);
   font-family: "Mali", cursive;
+  font-size: var(--mainFontSize);
 }
 
 img {
