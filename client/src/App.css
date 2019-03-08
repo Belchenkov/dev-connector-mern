@@ -2,6 +2,7 @@
   --mainBlack: #000;
   --mainWhite: #fff;
   --mainFontSize: 14px;
+  --mainTextShadow: 0 0 4px #000;
 }
 
 html, body {
@@ -16,8 +17,21 @@ body {
   font-size: var(--mainFontSize);
 }
 
+/*
 img {
   width: 100%;
+}
+*/
+
+.btn-blue {
+  background: #2a73c5;
+  color: #fff!important;
+  text-shadow: var(--mainTextShadow);
+  transition:  background-color .3s linear;
+}
+
+.btn-blue:hover {
+  background: #4749e0;
 }
 
 .landing {
@@ -55,3 +69,12 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+/*
+.App {
+  background: url("./img/bg.jpg") no-repeat center/cover fixed;
+  color: #fff!important;
+  text-shadow: var(--mainTextShadow);
+  min-height: 100vh;
+}
+*/
