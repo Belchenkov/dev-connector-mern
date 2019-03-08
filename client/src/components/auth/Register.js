@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import classnames from 'classnames';
 
 class Register extends Component {
     constructor(props) {
@@ -27,10 +29,14 @@ class Register extends Component {
             password2: this.state.password2
         };
 
-        console.log(newUser);
+        axios.post('/api/users/register', newUser)
+            .then(res => console.log(res.data))
+            .catch(err => this.setState({ errors: err.response.data }));
     };
 
     render() {
+        const { errors } = this.state;
+
         return (
             <div>
                 <div className="register">
@@ -42,64 +48,83 @@ class Register extends Component {
                                     Sign Up
                                 </h1>
                                 <p className="lead text-center">Create your DevConnector account</p>
-                                <form  onSubmit={this.onSubmit}>
-                                    <div className="form-group d-flex align-items-center">
-                                        <div className="mr-2">
+                                <form onSubmit={this.onSubmit}>
+                                    <div className="form-group row">
+                                        <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/employee-card.png" className="mr-1" />
                                         </div>
-                                        <input
-                                            type="text"
-                                            className="form-control form-control-lg"
-                                            placeholder="Name"
-                                            name="name"
-                                            value={this.state.name}
-                                            onChange={this.onChange}
-                                        />
+                                        <div className="col-md-11">
+                                            <input
+                                                type="text"
+                                                className={classnames('form-control form-control-lg', {
+                                                    'is-invalid': errors.name
+                                                })}
+                                                placeholder="Name"
+                                                name="name"
+                                                value={this.state.name}
+                                                onChange={this.onChange}
+                                            />
+                                            {errors.name && (<div className="d-flex w-100 invalid-feedback">{errors.name}</div>)}
+                                        </div>
+
                                     </div>
-                                    <div className="d-flex w-100">
-                                        <div className="mr-2">
+                                    <div className="row">
+                                        <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/gmail.png" />
                                         </div>
-                                        <div className="form-group w-100">
+                                        <div className="form-group col-md-11">
                                             <input
                                                 type="email"
-                                                className="form-control form-control-lg"
+                                                className={classnames('form-control form-control-lg', {
+                                                    'is-invalid': errors.email
+                                                })}
                                                 value={this.state.email}
                                                 placeholder="Email Address"
                                                 name="email"
                                                 onChange={this.onChange}
                                             />
+                                            {errors.email && (<div className="d-flex w-100 invalid-feedback">{errors.email}</div>)}
                                             <small>
                                                 This site uses Gravatar so if you want a
                                                 profile image, use a Gravatar email
                                             </small>
                                         </div>
                                     </div>
-                                    <div className="form-group d-flex align-items-center">
-                                        <div className="mr-2">
+                                    <div className="row">
+                                        <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/password.png" />
                                         </div>
-                                        <input
-                                            type="password"
-                                            className="form-control form-control-lg"
-                                            value={this.state.password}
-                                            placeholder="Password"
-                                            name="password"
-                                            onChange={this.onChange}
-                                        />
+                                        <div className="form-group col-md-11">
+                                            <input
+                                                type="password"
+                                                className={classnames('form-control form-control-lg', {
+                                                    'is-invalid': errors.password
+                                                })}
+                                                value={this.state.password}
+                                                placeholder="Password"
+                                                name="password"
+                                                onChange={this.onChange}
+                                            />
+                                            {errors.password && (<div className="d-flex w-100 invalid-feedback">{errors.password}</div>)}
+                                        </div>
                                     </div>
-                                    <div className="form-group d-flex align-items-center mb-5">
-                                        <div className="mr-2">
+                                    <div className="row mb-5">
+                                        <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/synchronize.png" />
                                         </div>
-                                        <input
-                                            type="password"
-                                            className="form-control form-control-lg"
-                                            value={this.state.password2}
-                                            placeholder="Confirm Password"
-                                            name="password2"
-                                            onChange={this.onChange}
-                                        />
+                                        <div className="col-md-11 form-group">
+                                            <input
+                                                type="password"
+                                                className={classnames('form-control form-control-lg', {
+                                                    'is-invalid': errors.password2
+                                                })}
+                                                value={this.state.password2}
+                                                placeholder="Confirm Password"
+                                                name="password2"
+                                                onChange={this.onChange}
+                                            />
+                                            {errors.password2 && (<div className="d-flex w-100 invalid-feedback">{errors.password2}</div>)}
+                                        </div>
                                     </div>
                                     <button
                                         type="submit"
