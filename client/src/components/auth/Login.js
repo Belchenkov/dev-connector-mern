@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import classnames from 'classnames';
+
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Login extends Component {
     constructor(props) {
@@ -68,39 +68,27 @@ class Login extends Component {
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/gmail.png" />
                                         </div>
-                                        <div className="col-md-11 form-group">
-                                            <input
-                                                type="email"
-                                                className={classnames('form-control form-control-lg', {
-                                                    'is-invalid': errors.email
-                                                })}
-                                                value={this.state.email}
-                                                placeholder="Email Address"
-                                                name="email"
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.email && (<div className="d-flex w-100 invalid-feedback">{errors.email}</div>)}
-                                            <small>
-                                                This site uses Gravatar so if you want a
-                                                profile image, use a Gravatar email
-                                            </small>
-                                        </div>
+                                        <TextFieldGroup
+                                            placeholder="Email Address"
+                                            name="email"
+                                            type="email"
+                                            value={this.state.email}
+                                            onChange={this.onChange}
+                                            error={errors.email}
+                                        />
                                     </div>
                                     <div className="row">
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/password.png" />
                                         </div>
-                                        <div className="form-group col-md-11">
-                                            <input
-                                                type="password"
-                                                className="form-control form-control-lg"
-                                                value={this.state.password}
-                                                placeholder="Password"
-                                                name="password"
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.password && (<div className="d-flex w-100 invalid-feedback">{errors.password}</div>)}
-                                        </div>
+                                        <TextFieldGroup
+                                            placeholder="Password"
+                                            name="password"
+                                            type="password"
+                                            value={this.state.password}
+                                            onChange={this.onChange}
+                                            error={errors.password}
+                                        />
                                     </div>
                                     <button
                                         type="submit"
