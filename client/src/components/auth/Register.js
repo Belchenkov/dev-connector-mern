@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {registerUser} from "../../actions/authActions";
 
+import TextFieldGroup from "../common/TextFieldGroup";
+
 class Register extends Component {
     constructor(props) {
         super(props);
@@ -68,78 +70,53 @@ class Register extends Component {
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/employee-card.png" className="mr-1" />
                                         </div>
-                                        <div className="col-md-11">
-                                            <input
-                                                type="text"
-                                                className={classnames('form-control form-control-lg', {
-                                                    'is-invalid': errors.name
-                                                })}
-                                                placeholder="Name"
-                                                name="name"
-                                                value={this.state.name}
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.name && (<div className="d-flex w-100 invalid-feedback">{errors.name}</div>)}
-                                        </div>
-
+                                        <TextFieldGroup
+                                            placeholder="Name"
+                                            name="name"
+                                            value={this.state.name}
+                                            onChange={this.onChange}
+                                            error={errors.name}
+                                        />
                                     </div>
                                     <div className="row">
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/gmail.png" />
                                         </div>
-                                        <div className="form-group col-md-11">
-                                            <input
-                                                type="email"
-                                                className={classnames('form-control form-control-lg', {
-                                                    'is-invalid': errors.email
-                                                })}
-                                                value={this.state.email}
-                                                placeholder="Email Address"
-                                                name="email"
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.email && (<div className="d-flex w-100 invalid-feedback">{errors.email}</div>)}
-                                            <small>
-                                                This site uses Gravatar so if you want a
-                                                profile image, use a Gravatar email
-                                            </small>
-                                        </div>
+                                        <TextFieldGroup
+                                            placeholder="Email Address"
+                                            name="email"
+                                            type="email"
+                                            value={this.state.email}
+                                            onChange={this.onChange}
+                                            error={errors.email}
+                                            info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+                                        />
                                     </div>
                                     <div className="row">
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/password.png" />
                                         </div>
-                                        <div className="form-group col-md-11">
-                                            <input
-                                                type="password"
-                                                className={classnames('form-control form-control-lg', {
-                                                    'is-invalid': errors.password
-                                                })}
-                                                value={this.state.password}
-                                                placeholder="Password"
-                                                name="password"
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.password && (<div className="d-flex w-100 invalid-feedback">{errors.password}</div>)}
-                                        </div>
+                                        <TextFieldGroup
+                                            placeholder="Password"
+                                            name="password"
+                                            type="password"
+                                            value={this.state.password}
+                                            onChange={this.onChange}
+                                            error={errors.password}
+                                        />
                                     </div>
                                     <div className="row mb-5">
                                         <div className="col-md-1">
                                             <img src="https://img.icons8.com/clouds/45/000000/synchronize.png" />
                                         </div>
-                                        <div className="col-md-11 form-group">
-                                            <input
-                                                type="password"
-                                                className={classnames('form-control form-control-lg', {
-                                                    'is-invalid': errors.password2
-                                                })}
-                                                value={this.state.password2}
-                                                placeholder="Confirm Password"
-                                                name="password2"
-                                                onChange={this.onChange}
-                                            />
-                                            {errors.password2 && (<div className="d-flex w-100 invalid-feedback">{errors.password2}</div>)}
-                                        </div>
+                                        <TextFieldGroup
+                                            placeholder="Confirm Password"
+                                            name="password2"
+                                            type="password"
+                                            value={this.state.password2}
+                                            onChange={this.onChange}
+                                            error={errors.password2}
+                                        />
                                     </div>
                                     <button
                                         type="submit"
