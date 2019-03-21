@@ -119,13 +119,13 @@ class AddExperience extends Component {
                                         onChange={this.onCheck}
                                         id="current"
                                     />
-                                    <label htmlFor="current" className="form-chech-label">
+                                    <label htmlFor="current" className="form-check-label">
                                         Current Job
                                     </label>
                                 </div>
                                 <TextAreaFieldGroup
                                     placeholder="Job Description"
-                                    name="Description"
+                                    name="description"
                                     value={this.state.description}
                                     onChange={this.onChange}
                                     error={errors.description}
