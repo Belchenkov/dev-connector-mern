@@ -64,52 +64,94 @@ class AddEducation extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
-                            <Link to="/dashboard" className="btn btn-light">Go Back</Link>
-                            <h1 className="display-4 text-center">Add Education</h1>
+                            <Link to="/dashboard" className="btn btn-blue">
+                                <img
+                                    src="https://img.icons8.com/flat_round/18/000000/circled-left-2.png"
+                                    alt="Back"
+                                    className="mr-2"
+                                />
+                                Go Back
+                            </Link>
+                            <h1 className="display-4 text-center">
+                                <img
+                                    src="https://img.icons8.com/bubbles/75/000000/graduation-cap.png"
+                                    alt="Add Education"
+                                    className="mr-3"
+                                />
+                                Add Education
+                            </h1>
                             <p className="lead text-center">
                                 Add any school, bootcamp, etc that you have attended
                             </p>
                             <small className="d-block pb-3">* = required fields</small>
                             <form onSubmit={this.onSubmit}>
-                                <TextFieldGroup
-                                    placeholder="* School"
-                                    name="school"
-                                    value={this.state.school}
-                                    onChange={this.onChange}
-                                    error={errors.school}
-                                />
-                                <TextFieldGroup
-                                    placeholder="* Degree or Certification"
-                                    name="degree"
-                                    value={this.state.degree}
-                                    onChange={this.onChange}
-                                    error={errors.degree}
-                                />
-                                <TextFieldGroup
-                                    placeholder="* Field of Study"
-                                    name="fieldofstudy"
-                                    value={this.state.fieldofstudy}
-                                    onChange={this.onChange}
-                                    error={errors.fieldofstudy}
-                                />
-                                <h6>From Date</h6>
-                                <TextFieldGroup
-                                    name="from"
-                                    type="date"
-                                    value={this.state.from}
-                                    onChange={this.onChange}
-                                    error={errors.from}
-                                />
-                                <h6>To Date</h6>
-                                <TextFieldGroup
-                                    name="to"
-                                    type="date"
-                                    value={this.state.to}
-                                    onChange={this.onChange}
-                                    error={errors.to}
-                                    disabled={this.state.disabled ? 'disabled' : ''}
-                                />
-                                <div className="form-check mb-4">
+                                <div className="row">
+                                    <div className="col-md-1">
+                                        <img src="https://img.icons8.com/dusk/45/000000/university.png" alt="School" />
+                                    </div>
+                                    <TextFieldGroup
+                                        placeholder="* School"
+                                        name="school"
+                                        value={this.state.school}
+                                        onChange={this.onChange}
+                                        error={errors.school}
+                                    />
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-md-1">
+                                        <img src="https://img.icons8.com/ultraviolet/45/000000/diploma.png" alt="Certification" />
+                                    </div>
+                                    <TextFieldGroup
+                                        placeholder="* Degree or Certification"
+                                        name="degree"
+                                        value={this.state.degree}
+                                        onChange={this.onChange}
+                                        error={errors.degree}
+                                    />
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-1">
+                                        <img src="https://img.icons8.com/dusk/45/000000/books.png" alt="Study" />
+                                    </div>
+                                    <TextFieldGroup
+                                        placeholder="* Field of Study"
+                                        name="fieldofstudy"
+                                        value={this.state.fieldofstudy}
+                                        onChange={this.onChange}
+                                        error={errors.fieldofstudy}
+                                    />
+                                </div>
+
+                                <div className="row text-center">
+                                    <div className="col-md-1 text-center">
+                                        <span>From</span>
+                                        <img src="https://img.icons8.com/plasticine/45/000000/calendar.png" alt="from" />
+                                    </div>
+                                    <TextFieldGroup
+                                        name="from"
+                                        type="date"
+                                        value={this.state.from}
+                                        onChange={this.onChange}
+                                        error={errors.from}
+                                    />
+                                </div>
+
+                                <div className="row text-center">
+                                    <div className="col-md-1 text-center">
+                                        <span>To</span>
+                                        <img src="https://img.icons8.com/plasticine/45/000000/calendar.png" alt="from" />
+                                    </div>
+                                    <TextFieldGroup
+                                        name="to"
+                                        type="date"
+                                        value={this.state.to}
+                                        onChange={this.onChange}
+                                        error={errors.to}
+                                        disabled={this.state.disabled ? 'disabled' : ''}
+                                    />
+                                </div>
+                                <div className="form-check my-4">
                                     <input
                                         type="checkbox"
                                         className="form-check-input"
@@ -123,19 +165,33 @@ class AddEducation extends Component {
                                         Current Job
                                     </label>
                                 </div>
-                                <TextAreaFieldGroup
-                                    placeholder="Program Description"
-                                    name="description"
-                                    value={this.state.description}
-                                    onChange={this.onChange}
-                                    error={errors.description}
-                                    info="Tell us about the program that you were in"
-                                />
-                                <input
+
+                                <div className="row">
+                                    <div className="col-md-1">
+                                        <img src="https://img.icons8.com/dusk/45/000000/property-script.png" alt="Job Description" />
+                                    </div>
+                                    <TextAreaFieldGroup
+                                        placeholder="Program Description"
+                                        name="description"
+                                        value={this.state.description}
+                                        onChange={this.onChange}
+                                        error={errors.description}
+                                        info="Tell us about the program that you were in"
+                                    />
+                                </div>
+
+                                <button
                                     type="submit"
                                     value="Submit"
-                                    className="btn btn-blue btn-block my-4"
-                                />
+                                    className="btn btn-success font-weight-bold btn-block my-4"
+                                >
+                                    <img
+                                        src="https://img.icons8.com/dusk/24/000000/plus.png"
+                                        alt="Submit"
+                                        className="mr-2"
+                                    />
+                                    Add Education
+                                </button>
                             </form>
                         </div>
                     </div>
