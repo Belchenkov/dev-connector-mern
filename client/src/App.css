@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
 :root {
   --mainBlack: #000;
   --mainWhite: #fff;
@@ -13,7 +15,8 @@ html, body {
 body {
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: "Mali", cursive;
+  /*font-family: "Mali", cursive;*/
+  font-family: 'Slabo 27px', serif;
   font-size: var(--mainFontSize);
 }
 
