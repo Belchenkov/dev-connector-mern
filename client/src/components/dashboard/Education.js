@@ -23,7 +23,14 @@ class Education extends Component {
                     <button
                         className="btn btn-danger"
                         onClick={this.onDeleteClick.bind(this, edu._id)}
-                    >Delete</button>
+                    >
+                        Delete
+                        <img
+                            src="https://img.icons8.com/dusk/24/000000/cancel-2.png"
+                            className="ml-1"
+                            alt="delete"
+                        />
+                    </button>
                 </td>
             </tr>
         ));

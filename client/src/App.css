@@ -73,6 +73,14 @@ img {
   color: #bbb !important;
 }
 
+.profile-avatar {
+  border: 1px solid #666666;
+  overflow: hidden;
+  padding: 10px;
+  height: 200px;
+  border-radius: 10px;
+}
+
 /*
 .App {
   background: url("./img/bg.jpg") no-repeat center/cover fixed;
