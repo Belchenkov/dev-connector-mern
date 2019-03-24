@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import isEmpty from "../../validation/is-empty";
+import PropTypes from 'prop-types';
 
 class ProfileHeader extends Component {
     render() {
         const { profile } = this.props;
 
         return (
-            <div className="row">
+            <div className="row text-shadow">
                 <div className="col-md-12">
                     <div className="card card-body bg-primary text-white mb-3">
                         <div className="row">
@@ -66,5 +67,9 @@ class ProfileHeader extends Component {
         );
     }
 }
+
+ProfileHeader.propTypes = {
+    profile: PropTypes.object.isRequired
+};
 
 export default ProfileHeader;

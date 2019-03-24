@@ -81,6 +81,10 @@ img {
   border-radius: 10px;
 }
 
+.text-shadow {
+  text-shadow: 0 0 3px #000;
+}
+
 /*
 .App {
   background: url("./img/bg.jpg") no-repeat center/cover fixed;
