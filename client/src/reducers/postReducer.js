@@ -1,5 +1,5 @@
 import {
-    GET_PROFILE,
+    ADD_POST,
     GET_PROFILES,
     PROFILE_LOADING,
     CLEAR_CURRENT_PROFILE
@@ -13,6 +13,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [action.payload, ...state.posts]
+            };
 
         default:
             return state;
