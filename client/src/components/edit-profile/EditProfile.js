@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import {Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import TextFieldGroup from "../common/TextFieldGroup";
 import InputGroup from "../common/InputGroup";
 import SelectListGroup from "../common/SelectListGroup";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import { createProfile } from "../../actions/profileActions";
+import { createProfile, getCurrentProfile } from "../../actions/profileActions";
+import  isEmpty from '../../validation/is-empty';
 
-
-class CreateProfile extends Component {
+class EditProfile extends Component {
     constructor(props) {
         super(props);
 
@@ -33,9 +33,61 @@ class CreateProfile extends Component {
         };
     }
 
+    componentDidMount() {
+        this.props.getCurrentProfile();
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({errors: nextProps.errors});
+        }
+
+        if (nextProps.profile.profile) {
+            const profile = nextProps.profile.profile;
+
+            // Bring skills array back to CSV
+            const skillsCSV = profile.skills.join(',');
+
+            // If profile field doesnt exist, make empty string
+            profile.company = !isEmpty(profile.company) ? profile.company : '';
+            profile.website = !isEmpty(profile.website) ? profile.website : '';
+            profile.location = !isEmpty(profile.location) ? profile.location : '';
+            profile.githubusername = !isEmpty(profile.githubusername)
+                ? profile.githubusername
+                : '';
+            profile.bio = !isEmpty(profile.bio) ? profile.bio : '';
+            profile.social = !isEmpty(profile.social) ? profile.social : {};
+            profile.twitter = !isEmpty(profile.social.twitter)
+                ? profile.social.twitter
+                : '';
+            profile.facebook = !isEmpty(profile.social.facebook)
+                ? profile.social.facebook
+                : '';
+            profile.linkedin = !isEmpty(profile.social.linkedin)
+                ? profile.social.linkedin
+                : '';
+            profile.youtube = !isEmpty(profile.social.youtube)
+                ? profile.social.youtube
+                : '';
+            profile.instagram = !isEmpty(profile.social.instagram)
+                ? profile.social.instagram
+                : '';
+
+            // Set component fields state
+            this.setState({
+                handle: profile.handle,
+                company: profile.company,
+                website: profile.website,
+                location: profile.location,
+                status: profile.status,
+                skills: skillsCSV,
+                githubusername: profile.githubusername,
+                bio: profile.bio,
+                twitter: profile.twitter,
+                facebook: profile.facebook,
+                linkedin: profile.linkedin,
+                youtube: profile.youtube
+            });
         }
     }
 
@@ -135,7 +187,7 @@ class CreateProfile extends Component {
         ];
 
         return (
-            <div className="create-profile">
+            <div className="create-profile pb-5">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8 m-auto">
@@ -150,15 +202,12 @@ class CreateProfile extends Component {
 
                             <h1 className="display-4 text-center">
                                 <img
-                                    src="https://img.icons8.com/dusk/50/000000/add-user-group-woman-man.png"
-                                    alt="create profile"
+                                    src="https://img.icons8.com/dusk/50/000000/multi-edit.png"
+                                    alt="edit profile"
                                     className="mr-2"
                                 />
-                                Create Your Profile
+                                Edit Profile
                                 </h1>
-                            <p className="lead text-center">
-                                Let's get some information to make your profile stand out
-                            </p>
                             <small className="d-block pb-3">* = required fields</small>
                             <form onSubmit={this.onSubmit}>
                                 <div className="row">
@@ -172,9 +221,10 @@ class CreateProfile extends Component {
                                         onChange={this.onChange}
                                         error={errors.handle}
                                         info="A unique handle for your profile URL.
-                                        Your full name, company name, nickname"
+                                    Your full name, company name, nickname"
                                     />
                                 </div>
+
                                 <div className="row">
                                     <div className="col-md-1">
                                         <img src="https://img.icons8.com/dusk/45/000000/goal.png" alt="Status" />
@@ -246,7 +296,6 @@ class CreateProfile extends Component {
                                     />
                                 </div>
 
-
                                 <div className="row">
                                     <div className="col-md-1">
                                         <img src="https://img.icons8.com/color/45/000000/github-2.png" alt="githubusername" />
@@ -274,7 +323,6 @@ class CreateProfile extends Component {
                                         info="Tell us a little about yourself"
                                     />
                                 </div>
-
                                 <div className="mb-3">
                                     <button
                                         type="button"
@@ -300,11 +348,11 @@ class CreateProfile extends Component {
                                     className="btn btn-success btn-block mt-4 font-weight-bold"
                                 >
                                     <img
-                                        src="https://img.icons8.com/office/30/000000/add-user-male.png"
+                                        src="https://img.icons8.com/dusk/30/000000/edit.png"
                                         alt="edit submit"
                                         className="mr-1"
                                     />
-                                    Create Profile
+                                    Edit Profile
                                 </button>
                             </form>
                         </div>
@@ -315,9 +363,10 @@ class CreateProfile extends Component {
     }
 }
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
     profile: PropTypes.object.isRequired,
     createProfile: PropTypes.func.isRequired,
+    getCurrentProfile: PropTypes.func.isRequired,
     errors: PropTypes.object.isRequired
 };
 
@@ -326,4 +375,4 @@ const mapStateToProps = state => ({
     errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(withRouter(EditProfile));

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+
 :root {
   --mainBlack: #000;
   --mainWhite: #fff;
@@ -13,7 +15,8 @@ html, body {
 body {
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: "Mali", cursive;
+  /*font-family: "Mali", cursive;*/
+  font-family: 'Slabo 27px', serif;
   font-size: var(--mainFontSize);
 }
 
@@ -68,6 +71,18 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+.profile-avatar {
+  border: 1px solid #666666;
+  overflow: hidden;
+  padding: 10px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.text-shadow {
+  text-shadow: 0 0 3px #000;
 }
 
 /*

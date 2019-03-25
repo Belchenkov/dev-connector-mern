@@ -14,6 +14,12 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import CreateProfile from "./components/create-profile/CreateProfile";
+import EditProfile from "./components/edit-profile/EditProfile";
+import AddExperience from "./components/add-credentials/AddExperience";
+import AddEducation from "./components/add-credentials/AddEducation";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
+import NotFound from "./components/not-found/NotFound";
 
 import PrivateRoute from "./components/common/PrivateRoute";
 
@@ -51,12 +57,24 @@ class App extends Component {
                     <div className="container main">
                         <Route exact path="/register" component={ Register } />
                         <Route exact path="/login" component={ Login } />
+                        <Route exact path="/profiles" component={ Profiles } />
+                        <Route exact path="/profile/:handle" component={ Profile } />
                         <Switch>
                             <PrivateRoute exact path="/dashboard" component={ Dashboard } />
                         </Switch>
                         <Switch>
                             <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
                         </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/add-experience" component={ AddExperience } />
+                        </Switch>
+                        <Switch>
+                            <PrivateRoute exact path="/add-education" component={ AddEducation } />
+                        </Switch>
+                        <Route exact path="/not-found" component={ NotFound } />
                     </div>
                     {/*<Footer />*/}
                 </div>

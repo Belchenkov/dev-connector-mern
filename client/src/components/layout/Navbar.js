@@ -18,6 +18,16 @@ class Navbar extends Component {
         const authLinks = (
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
+                    <Link className="nav-link d-flex align-items-center" to="/dashboard">
+                        <div className="mr-1">
+                            <img src="https://img.icons8.com/office/15/000000/add-key.png" />
+                        </div>
+                        <div>
+                            Dashboard
+                        </div>
+                    </Link>
+                </li>
+                <li className="nav-item">
                     <a
                         href="#"
                         onClick={this.onLogoutClick.bind(this)}
