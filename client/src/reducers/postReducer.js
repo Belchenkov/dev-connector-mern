@@ -22,7 +22,8 @@ export default function (state = initialState, action) {
         case GET_POSTS:
             return {
                 ...state,
-                posts: action.payload
+                posts: action.payload,
+                loading: false
             };
         case ADD_POST:
             return {
