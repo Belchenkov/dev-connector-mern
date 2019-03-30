@@ -36,6 +36,11 @@ class ProfileGithub extends Component {
                 <div className="row">
                     <div className="col-md-6">
                         <h4>
+                            <img
+                                src="https://img.icons8.com/color/28/000000/repository.png"
+                                alt="repository"
+                                className="mr-1"
+                            />
                             <a href={repo.html_url} className="text-info" target="_blank">{repo.name}</a>
                         </h4>
                         <p>{repo.description}</p>
@@ -58,7 +63,13 @@ class ProfileGithub extends Component {
         return (
             <div ref="myRef">
                 <hr />
-                <h3>Latest Github Repos</h3>
+                <h3>
+                    <img
+                        src="https://img.icons8.com/color/48/000000/github.png"
+                        alt="github"
+                        className="mr-1"
+                    />
+                    Latest Github Repos</h3>
                { repoItems }
             </div>
         );

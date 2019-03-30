@@ -11,7 +11,7 @@ class ProfileHeader extends Component {
                 <div className="col-md-12">
                     <div className="card card-body bg-primary text-white mb-3">
                         <div className="row">
-                            <div className="col-4 col-md-3 m-auto">
+                            <div className="col-4 col-md-3 m-auto text-center">
                                 <img className="rounded-circle"
                                      src={profile.user.avatar}
                                      alt="avatar" />
@@ -19,10 +19,24 @@ class ProfileHeader extends Component {
                         </div>
                         <div className="text-center">
                             <h1 className="display-4 text-center">{ profile.user.name }</h1>
-                            <p className="lead text-center">{ profile.status }
+                            <p className="lead text-center">
+                                <img
+                                    src="https://img.icons8.com/dusk/30/000000/company.png"
+                                    alt="place"
+                                    className="mr-1 mb-1"
+                                />
+                                { profile.status }
                                 { isEmpty(profile.company) ? null : (<span> - { profile.company }</span>) }
                             </p>
-                            { isEmpty(profile.location) ? null : (<p>{ profile.location }</p>) }
+                            { isEmpty(profile.location) ? null : (
+                                <p>
+                                    <img
+                                        src="https://img.icons8.com/office/30/000000/place-marker.png"
+                                        alt="place"
+                                    />
+                                    { profile.location }
+                                </p>
+                            ) }
                             <p>
                                 { isEmpty(profile.website) ? null : (
                                     <a className="text-white p-2" href={profile.website}>

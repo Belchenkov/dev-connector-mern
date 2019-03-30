@@ -60,9 +60,15 @@ class PostItem extends Component {
                         >
                             <i className="text-secondary fas fa-thumbs-down" />
                         </button>
-                        <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                            Comments
-                        </Link>
+                        <div className="mt-3">
+                            <Link to={`/post/${post._id}`} className="btn btn-blue mr-1">
+                             <img
+                                 src="https://img.icons8.com/plasticine/25/000000/speech-bubble.png"
+                                 alt="comments"
+                                 className="mr-1"
+                             />
+                                Comments
+                            </Link>
                             {post.user === auth.user.id ? (
                                 <button
                                     onClick={this.onDeleteClick.bind(this, post._id)}
@@ -72,6 +78,7 @@ class PostItem extends Component {
                                     <i className="fas fa-times" />
                                 </button>
                             ) : null}
+                        </div>
                         </span>) : null }
                     </div>
                 </div>

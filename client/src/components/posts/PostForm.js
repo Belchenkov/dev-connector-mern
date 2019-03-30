@@ -47,6 +47,11 @@ class PostForm extends Component {
             <div className="post-form mb-3">
                 <div className="card card-info">
                     <div className="card-header bg-primary text-white">
+                        <img
+                            src="https://img.icons8.com/plasticine/30/000000/speech-bubble.png"
+                            alt="comments"
+                            className="mr-1"
+                        />
                         Say Something...
                     </div>
                     <div className="card-body">
@@ -60,7 +65,7 @@ class PostForm extends Component {
                                     error={errors.text}
                                 />
                             </div>
-                            <button type="submit" className="btn btn-dark">Submit</button>
+                            <button type="submit" className="btn btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>
